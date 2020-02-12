@@ -8,7 +8,6 @@
     <string name="btn_minus">-</string>
     <string name="btn_plus">+</string>
     <string name="btn_equal">=</string>
-    <string name="start_output">0</string>
     <string name="btn_one">1</string>
     <string name="btn_two">2</string>
     <string name="btn_three">3</string>
@@ -27,4 +26,5 @@
     <string name="txt_k">K</string>
     <string name="txt_i">I</string>
     <string name="txt_n">N</string>
+    <string name="error_point_already_exist">Точка уже существует</string>
 </resources>

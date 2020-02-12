@@ -3,9 +3,11 @@ package com.example.textchain;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private Button btnZero;
@@ -20,6 +22,31 @@ public class MainActivity extends AppCompatActivity {
     private Button btnNine;
     private Button btnPoint;
     private TextView txtOutput;
+    private String textBuffer;
+    View.OnClickListener onButtonClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Button btn = (Button) v;
+            String curBtn = btn.getText().toString();
+
+            if (TextUtils.isEmpty(txtOutput.getText())) {
+                textBuffer ="";
+            } else {
+                textBuffer = txtOutput.getText().toString();
+            }
+
+            if (curBtn.equals(getString(R.string.btn_point)) &&
+                    textBuffer.contains(getString(R.string.btn_point))) {
+                Toast.makeText(MainActivity.this,
+                        getString(R.string.error_point_already_exist), Toast.LENGTH_SHORT).show();
+            } else {
+                textBuffer += curBtn;
+            }
+
+            txtOutput.setText(textBuffer);
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +84,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    View.OnClickListener onButtonClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Button btn = (Button) v;
-            String txt = btn.getText().toString();
-            txtOutput.setText(txt);
-
-        }
-    };
 }
